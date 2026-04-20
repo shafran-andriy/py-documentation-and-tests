@@ -23,8 +23,11 @@ urlpatterns = [
         name="swagger-ui",
     ),
     path(
-        "api/doc/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"
+        "api/doc/redoc/",
+        SpectacularRedocView.as_view(url_name="schema"), name="redoc"
     ),
-    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    path("token/verify/", TokenVerifyView.as_view(), name="token_verify"),
+    path("token/refresh/",
+         TokenRefreshView.as_view(), name="token_refresh"),
+    path("token/verify/",
+         TokenVerifyView.as_view(), name="token_verify"),
 ]
