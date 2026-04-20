@@ -1,14 +1,7 @@
 from django.urls import path
-from rest_framework_simplejwt.views import (TokenRefreshView,
-                                            TokenVerifyView)
+from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView
 
-from user.views import (CreateUserView, CreateTokenView,
-                        ManageUserView)
-from drf_spectacular.views import (
-    SpectacularAPIView,
-    SpectacularRedocView,
-    SpectacularSwaggerView,
-)
+from user.views import CreateTokenView, CreateUserView, ManageUserView
 
 app_name = "user"
 
@@ -16,18 +9,6 @@ urlpatterns = [
     path("register/", CreateUserView.as_view(), name="create"),
     path("login/", CreateTokenView.as_view(), name="login"),
     path("me/", ManageUserView.as_view(), name="manage"),
-    path("api/doc/", SpectacularAPIView.as_view(), name="schema"),
-    path(
-        "api/doc/swagger/",
-        SpectacularSwaggerView.as_view(url_name="schema"),
-        name="swagger-ui",
-    ),
-    path(
-        "api/doc/redoc/",
-        SpectacularRedocView.as_view(url_name="schema"), name="redoc"
-    ),
-    path("token/refresh/",
-         TokenRefreshView.as_view(), name="token_refresh"),
-    path("token/verify/",
-         TokenVerifyView.as_view(), name="token_verify"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("token/verify/", TokenVerifyView.as_view(), name="token_verify"),
 ]
