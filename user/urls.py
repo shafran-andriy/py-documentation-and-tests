@@ -1,7 +1,9 @@
 from django.urls import path
-from rest_framework_simplejwt.views import TokenRefreshView, TokenVerifyView
+from rest_framework_simplejwt.views import (TokenRefreshView,
+                                            TokenVerifyView)
 
-from user.views import CreateUserView, CreateTokenView, ManageUserView
+from user.views import (CreateUserView, CreateTokenView,
+                        ManageUserView)
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
