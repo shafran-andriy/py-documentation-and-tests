@@ -186,3 +186,10 @@ class AdminMovieApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertSetEqual(set(movie.genres.values_list("id", flat=True)), {genre.id})
         self.assertSetEqual(set(movie.actors.values_list("id", flat=True)), {actor.id})
+
+    def test_delete_movie_not_allowed(self):
+        movie = sample_movie()
+
+        res = self.client.delete(detail_url(movie.id))
+
+        self.assertEqual(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
